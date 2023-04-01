@@ -1,0 +1,95 @@
+.event-tile {
+    height: 360px;
+    width: 100%;
+    /* padding: 20px; */
+    background-color: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border: 2px solid;
+    border-color: #efefef;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    row-gap: 8px;
+  }
+  .event-tile:hover {
+    border-color: rgb(34 197 94);
+    color: rgb(34 197 94);
+  }
+  /* .event-tile:hover .tags  {
+    background-color: rgb(34 197 94);
+  } */
+
+  .event-tile:hover .registration-button  {
+    background-color: rgb(34 197 94);
+  }
+  /* .event-tile:hover .lmao {
+    color: rgb(34 197 94);
+  } */
+  .event-tile:hover .title {
+    color: rgb(34 197 94);
+  }
+  .registration-button {
+    background-color: #00abd6;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    /* transition: background-color 0.2s ease-in-out; */
+  }
+  
+  .registration-button:hover {
+    background-color: #0095c7;
+  }
+
+  .title{
+    font-size: 26px;
+    color:#0095c7;
+    font-weight: 600;
+  }
+
+  .tags{
+    padding: 12px 16px;
+    display: inline-block;
+    border: 2px solid #eaeaea;
+    background-color: #eaeaea;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 6px;
+    width: fit-content;
+  }
+  
+  .tags:hover {
+    /* color: #fff; */
+    background-color: #e1e1e1;
+  }
+
+  .div2{
+    background-color: #fafafa;
+    padding-left: 24px;
+    padding-right: 20px;
+    padding-top: 16px;
+    padding-bottom: 50px;
+  }
+
+  .icon {
+    border-radius: 100%;
+    border-width: 2px;
+    border-color: #f4fbf6;
+    height: 60px;
+    width: 60px;
+    padding: 2%;
+  }
+  .icon:hover{
+    border-color: #34e399;
+    color: #34e399;
+  }
+
+  .sepia { filter: invert(74%) sepia(90%) saturate(377%) hue-rotate(89deg) brightness(93%) contrast(91%); }

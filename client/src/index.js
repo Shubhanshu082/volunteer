@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+// import "@fontsource/nunito-sans";
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import {
@@ -10,6 +11,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

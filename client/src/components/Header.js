@@ -39,7 +39,7 @@ export const Header = ({showModal, setShowModal}) => {
     <div className='items-center w-[100%] inline-flex space-between'>
       <ul className='inline-flex grow items-center'>
         <li className='mr-[7%] my-3'>
-          <Link to="/" className='font-bold text-green-700 text-4xl font-alacarte'>V</Link>
+          <Link to="/" className='font-bold text-green-500 text-4xl font-alacarte'>V</Link>
         </li>
         <li className='mr-[2%] my-6'>
           <Link to="/upcoming">Upcoming</Link>
