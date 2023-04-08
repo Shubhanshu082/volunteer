@@ -2,25 +2,28 @@ import React, {useState} from 'react'
 import {
   Routes,
   Route,
-  Link
 } from "react-router-dom";
 import Header from '../components/Header';
-import Upcoming from '../components/Upcoming'
 import Create from '../components/Create'
 import Home from '../components/Home'
 import Signin from '../components/Signin';
+import EventPage from '../components/EventPage';
 
 export const Main = () => {
   const [showModal, setShowModal] = useState(false);
+  const [user,setLoginUser] = useState({
+
+  })
+
   return (
     <>
-      <Header showModal={showModal} setShowModal={setShowModal}/>
+      <Header showModal={showModal} setShowModal={setShowModal} user={user}/>
       <Routes>
-        <Route exact path="/" element={<Home/>}/>
-        <Route path="/upcoming" element={<Upcoming/>}/>
+        <Route exact path="/" element={<Home user={user} setShowModal={setShowModal} />}/>
         <Route path="/create" element={<Create/>}/>
+        <Route path="/event/:id" element={<EventPage user={user} setShowModal={setShowModal} />} />
       </Routes>
-      {showModal && <Signin showModal={showModal} setShowModal={setShowModal}/>}
+      {showModal && <Signin showModal={showModal} setShowModal={setShowModal} setLoginUser={setLoginUser}/>}
     </>
   )
 }

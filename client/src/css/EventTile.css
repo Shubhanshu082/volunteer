@@ -30,6 +30,15 @@
   .event-tile:hover .title {
     color: rgb(34 197 94);
   }
+
+  .registered {
+    border-color: rgb(34 197 94) !important;
+    border-width: 4px !important;
+    background-color: rgb(218, 156, 215) !important;
+    color: rgb(50, 49, 50) !important;
+    cursor: default !important;
+  }
+
   .registration-button {
     background-color: #00abd6;
     color: #fff;

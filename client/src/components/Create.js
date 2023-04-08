@@ -1,7 +1,58 @@
 import React, {useState} from 'react'
-import Button from 'react-bootstrap/Button'
+import styled from 'styled-components'
 import axios from 'axios'
-import Form from 'react-bootstrap/Form'
+
+const CreateContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+`;
+
+const Title = styled.h2`
+  font-size: 30px;
+  margin-bottom: 30px;
+  font-weight: 600;
+`;
+
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  margin-bottom: 30px;
+`;
+
+const FormInput = styled.input`
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 20px;
+  font-size: 18px;
+  padding: 10px;
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  height: 100px;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 20px;
+  font-size: 18px;
+  padding: 10px;
+`;
+
+const SubmitButton = styled.button`
+  background-color: #3483db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: 600;
+`;
 
 export const Create = () => {
 
@@ -15,33 +66,25 @@ export const Create = () => {
     const [eventData, setEventData] = useState({
         name: "",
         description: "",
-        date: "",
+        startDate: "",
+        endDate: "",
         location: "",
     });
 
   return (
-    <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formEventName">
-            <Form.Label>Event Name</Form.Label>
-            <Form.Control type="text" placeholder="Clean Greater Noida!" value={eventData.name} onChange={(e) => setEventData({...eventData, name: e.target.value})}/>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formEventDescription">
-            <Form.Label>Description</Form.Label>
-            <Form.Control type="text" placeholder="Description for the event" value={eventData.description} onChange={(e) => setEventData({...eventData, description: e.target.value})}/>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formEventDescription">
-            <Form.Label>Date</Form.Label>
-            <Form.Control type="date" placeholder="Date of the event" value={eventData.date} onChange={(e) => setEventData({...eventData, date: e.target.value})}/>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formEventDescription">
-            <Form.Label>Location</Form.Label>
-            <Form.Control type="text" placeholder="Location of the event" value={eventData.location} onChange={(e) => setEventData({...eventData, location: e.target.value})}/>
-        </Form.Group>
-        <Button variant="primary" type="submit">
-            Submit
-        </Button>
-    </Form>
+    <CreateContainer>
+      <Title>Create Event</Title>
+      <FormContainer onSubmit={handleSubmit}>
+        <FormInput type="text" placeholder="Event Name" value={eventData.name} onChange={(e) => setEventData({...eventData, name: e.target.value})}/>
+        <TextArea type="text" placeholder="Description (max 300 characters)" maxLength="300" value={eventData.description} onChange={(e) => setEventData({...eventData, description: e.target.value})}/>
+        <FormInput type="date" placeholder="Start date" value={eventData.startDate} onChange={(e) => setEventData({...eventData, startDate: e.target.value})}/>
+        <FormInput type="date" placeholder="End date" value={eventData.endDate} onChange={(e) => setEventData({...eventData, endDate: e.target.value})}/>
+        <FormInput type="text" placeholder="Location" value={eventData.location} onChange={(e) => setEventData({...eventData, location: e.target.value})}/>
+        <SubmitButton type="submit">
+            Create Event
+        </SubmitButton>
+      </FormContainer>
+    </CreateContainer>
   )
 }
 

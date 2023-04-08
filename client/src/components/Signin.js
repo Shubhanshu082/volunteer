@@ -10,7 +10,7 @@ import '../css/Signin.css'
 // import firebase from 'backend/firebase/app';
 // import 'firebase/auth';
 
-export const Signin = ({showModal, setShowModal}) => {
+export const Signin = ({showModal, setShowModal, setLoginUser}) => {
     
     const [formData, setFormData] = useState({
         email: "",
@@ -24,17 +24,23 @@ export const Signin = ({showModal, setShowModal}) => {
         password: "",
     });
 
-    const handleLogin = (event) => {
+    const handleLogin = async(event) => {
     // prevents the submit button from refreshing the page
         event.preventDefault();
-        axios.post("http://localhost:3000/api/user/login",registerData )
-        .then(res=>console.log(res))
+        const res = await axios.post("http://localhost:3000/api/user/login", formData);
+        if(res.data.message==="Successful"){
+            setLoginUser(res.data.user);
+            setShowModal(false);
+        }
     };
 
-    const handleRegister = (event) => {
+    const handleRegister = async(event) => {
         event.preventDefault();
-        axios.post("http://localhost:3000/api/user/register",registerData )
-        .then(res=>console.log(res))
+        const res = await axios.post("http://localhost:3000/api/user/register", registerData);
+        if(res.data.message==="Successful"){
+            setLoginUser(res.data.user);
+            setShowModal(false);
+        }
     };
 
   return (
@@ -43,20 +49,17 @@ export const Signin = ({showModal, setShowModal}) => {
             <Tabs justify defaultActiveKey="Signin" className='mb-5'>
                 <Tab eventKey="Signin" title="Signin">
                 <Form onSubmit={handleLogin}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3" controlId="formBasicEmailLogin">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})}/>
-                        <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                        </Form.Text>
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Group className="mb-3" controlId="formBasicPasswordLogin">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" value={formData.password} onChange={(e) => setFormData({...formData, password: e.target.value})}/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
+                        <Form.Check type="checkbox" label="Remember me" />
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         Submit
@@ -76,6 +79,9 @@ export const Signin = ({showModal, setShowModal}) => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" value={registerData.email} onChange={(e) => setRegisterData({...registerData, email: e.target.value})}/>
+                        <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                        </Form.Text>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">

@@ -1,14 +1,8 @@
-import React, {useState} from 'react'
-import ReactDOM from 'react-dom/client';
+import React from 'react'
 import {
-    BrowserRouter as Router,
-    NavLink,
     Link,
     useNavigate,
-    Switch,
-    useLocation
   } from "react-router-dom";  
-  import styled from "styled-components";
   import Button from 'react-bootstrap/Button';
  
 //   const Button = styled.button`
@@ -26,8 +20,9 @@ import {
 //   }
 // `;
 
-export const Header = ({showModal, setShowModal}) => {
+export const Header = ({showModal, setShowModal, user}) => {
 
+  let navigate = useNavigate();
   const handleClick = () => {
     setShowModal(!showModal);
   };
@@ -41,16 +36,25 @@ export const Header = ({showModal, setShowModal}) => {
         <li className='mr-[7%] my-3'>
           <Link to="/" className='font-bold text-green-500 text-4xl font-alacarte'>V</Link>
         </li>
-        <li className='mr-[2%] my-6'>
+        {/* <li className='mr-[2%] my-6'>
           <Link to="/upcoming">Upcoming</Link>
-        </li>
+        </li> */}
         <li className='mx-[2%] my-6'>
-          <Link to="/create">Create Event</Link>
+          <div className='cursor-pointer hover:text-zinc-500' onClick={(e) => {
+            if(user && user._id){
+              navigate("/create");
+            }
+            else{
+              setShowModal(true);
+            }
+          }}>Create Event</div>
         </li>
       </ul>
       <ul className='inline-flex grow flex-row-reverse items-center'>
           <li className='ml-[2%]'>
-          <Button variant="outline-success" onClick={handleClick}>Sign in</Button>
+          {
+            user && user._id ? user.userName:<Button variant="outline-success" onClick={handleClick}>Sign in</Button>
+          }
           </li>
       </ul>
 

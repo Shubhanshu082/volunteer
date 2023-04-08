@@ -9,7 +9,11 @@ const eventSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    date: {
+    startDate: {
+        type: Date,
+        required: true,
+    },
+    endDate: {
         type: Date,
         required: true,
     },
@@ -18,7 +22,10 @@ const eventSchema = mongoose.Schema({
         required: true
     },
     participants: {
-        type: Object,
+        type: Array,
+    },
+    status: {
+        type: String,
     },
     host: {
         type: Object,

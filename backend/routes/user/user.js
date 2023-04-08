@@ -4,33 +4,33 @@ const router = express.Router();
 
 router.post("/login",(req,res)=>{
     const {email,password} =req.body;
-    User.findone({email:email},(err,user)=>{
+    console.log(req.body);
+    User.findOne({email:email},(err,user)=>{
         if(user){
            if(password === user.password){
-               res.send({message:"login sucess",user:user})
+               res.send({message:"Successful",user:user})
            }else{
-               res.send({message:"wrong credentials"})
+               res.send({message:"Wrong credentials"})
            }
         }else{
-            res.send("not register")
+            res.send("Not registered")
         }
     })
 });
 
 router.post("/register",(req,res)=>{
-  console.log(req.body) 
   const {userName, name,email,password} =req.body;
   User.findOne({email:email},(err,user)=>{
       if(user){
           res.send({message:"User already exists!"})
       }else {
-          const user = new User({userName, name,email,password})
+          const user = new User({userName, name, email, password})
           user.save(err=>{
               if(err){
                   res.send(err)
               }
               else{
-                  res.send({message:"Successfull"})
+                  res.send({message:"Successful",user})
               }
           })
       }

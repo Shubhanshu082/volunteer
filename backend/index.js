@@ -11,6 +11,7 @@ import User from './models/userModel.js'
 import Event from './models/eventModel.js'
 import Group from './models/groupModel.js'
 import routes from './routes/api.js'
+import './config/cron.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000
